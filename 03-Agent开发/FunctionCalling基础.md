@@ -1,7 +1,7 @@
 # FunctionCalling基础
 
 > 📅 学习日期：2026-07-21
-> 🔗 关联面试题：Agent 专题 题8（Agent 定义及与传统 AI 区别）、题9（LLM Agent 架构组成）、题11（Agent 核心工作流程）、题18（Agent 与直接调用 LLM API 的本质区别）、题19（Tool Calling 完整链路解析）
+> 🔗 关联面试题：Agent 专题 题8（Agent 定义及与传统 AI 区别）、题9（LLM Agent 架构组成）、题11（Agent 核心工作流程）、题13（动态 API 调用的实现方式）、题18（Agent 与直接调用 LLM API 的本质区别）、题19（Tool Calling 完整链路解析）
 
 ## 一、Agent 基础
 
