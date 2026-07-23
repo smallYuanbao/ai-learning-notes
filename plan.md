@@ -92,11 +92,12 @@
 - **晚上**：笔记《ReAct 模式实践》+ 面试题「ReAct 的工作原理」
 - 📝 **实际产出**：ReAct模式.md（核心循环/FC 区别表/双流派 Prompt/终止条件/硬保险）+ 2 道面试题
 
-### 周三（7/23）— Self-Reflection 反思机制
+### 周三（7/23）— Self-Reflection 反思机制 ✅ 已完成
 
 - **上午**：学习 Self-Reflection 概念：Agent 如何评估自己的输出质量、发现错误并自我纠正
 - **下午**：在 ReAct 循环中加入反思步骤——让 LLM 在 Observation 后追问自己"这个结果够吗？有没有矛盾？"
 - **晚上**：笔记《Self-Reflection 反思机制》+ 面试题整理
+- 📝 **实际产出**：Self-Reflection.md（3 种路径/与 ReAct 五维对比/3 种组合方式/Critique+Refine Prompt/实测 5 个问题捕获）+ 题11 更新反思层 + 题17 新增反思追问
 
 ### 周三 — MCP 协议与接入
 

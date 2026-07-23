@@ -10,8 +10,8 @@
 ## 📍 当前进度
 
 - **当前阶段**：阶段 3 - Agent 智能体开发
-- **本周任务**：Self-Reflection 反思机制 + MCP 协议学习
-- **今日任务**：Self-Reflection 理论学习 + 在实际代码中加入反思步骤
+- **本周任务**：MCP 协议学习 + 多 Agent 协作概念
+- **今日任务**：MCP 协议理论学习 + Agent 进度同步 + 笔记收尾
 
 ---
 
@@ -23,7 +23,7 @@
 - [ ] 1.3 Token 计数与成本估算实验
 - [ ] 1.4 System Prompt vs User Prompt 实验
 - [ ] 1.5 流式输出原理（SSE）
-- [ ] 1.6 Function Calling 基础
+- [x] 1.6 Function Calling 基础
 - [x] 1.7 吴恩达 Prompt Engineering 课程（1-2/7 节） → [笔记](./01-基础认知/吴恩达Prompt课程笔记.md)
 - [x] 1.8 Prompt 优化实验（分隔符、结构化输出、条件检查、Few-shot）
 - [x] 1.9 提示词工程面试题 3/32 完成（题1、4、9）→ [回答](./面试题库/05-提示词工程专题.md)
@@ -49,7 +49,8 @@
   - [x] 对应面试题：Agent 专题 题8/9/11/13/18/19（6 道）
 - [x] 3.2 ReAct 模式实现（思考-行动-观察循环 + 双流派 Prompt + 终止条件）→ [笔记](./03-Agent开发/ReAct模式.md)
   - [x] 对应面试题：Agent 专题 题11/17（2 道）
-- [ ] 3.3 Self-Reflection 反思机制
+- [x] 3.3 Self-Reflection 反思机制（Self-Refine/Reflexion/多Agent辩论 + 实测验证）→ [笔记](./03-Agent开发/Self-Reflection.md)
+  - [x] 对应面试题：Agent 专题 题11（更新）、题17（新增追问）
 - [ ] 3.4 MCP 协议学习与接入
 - [ ] 3.5 多 Agent 协作概念
 - [ ] 3.6 在 baby-ai 中实现 Agent 功能
@@ -120,6 +121,7 @@
 
 | 日期 | 学了什么 | 笔记链接 | 关联面试题 |
 |------|---------|---------|-----------|
+| 2026-07-23 | Self-Reflection 反思机制（3 种路径/与 ReAct 关系/组合方式/实测对比） | [笔记](./03-Agent开发/Self-Reflection.md) | Agent 专题 题11（更新反思层）、题17（+反思追问） |
 | 2026-07-22 | ReAct 模式（核心循环/双流派 Prompt/终止条件/硬保险） | [笔记](./03-Agent开发/ReAct模式.md) | Agent 专题 题11、13、17 |
 | 2026-07-21 | Function Calling 基础（Agent 概念/FC 定义/四步工作流/Schema 规范/实测对比） | [笔记](./03-Agent开发/FunctionCalling基础.md) | Agent 专题 题8、9、11、13、18、19 |
 | 2026-07-20 | 评估数据更新 + ANN vs 暴力搜索实测 + 向量维度对比实验（1024→64） | [笔记](./02-RAG全链路/embedding原理与选型.md) | RAG 专题 题12 Q2、19 Q2 |
