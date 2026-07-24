@@ -26,10 +26,11 @@
 | 6 | 框架 | 2-6 | LangChain/LlamaIndex 相关（5 道） | 阶段 4 |
 | 7 | 框架 | 14-16 | 多模态推理/框架对比/AutoGPT（3 道） | 阶段 3-4 |
 | 8 | OpenClaw | 23-26,28-31,35-45 | OpenClaw 专属（17 道） | 阶段 3 |
-| 9 | 通用 | 20-22,27,32-34 | 通用 Agent / Skills / MCP（7 道） | 阶段 3 |
-| 10 | LangChain | 46-48 | LangChain Agent（3 道） | 阶段 4 |
+| 9 | 通用 | 20-22,27,34 | 通用 Agent / MCP（5 道） | 阶段 3 |
+| 10 | Skills | 32, 33 | Skills 定义及作用 / MCP 与 Skills 差异（2 道） | ⏸️ 待学 Skills 后补充 |
+| 11 | LangChain | 46-48 | LangChain Agent（3 道） | 阶段 4 |
 
-> 📊 共 48 道：🟢 7 道 + 🔴 41 道（分 10 组）
+> 📊 共 48 道：🟢 7 道 + 🔴 41 道（分 11 组）
 > 🔑 下一步：题10（Agent 常见功能）→ Memory（题12/22）→ 框架 & OpenClaw（阶段 3-4）
 
 ---
