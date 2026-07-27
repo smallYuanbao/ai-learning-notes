@@ -18,14 +18,13 @@
 | 41 | 父 Agent 生成子 Agent 的边界问题（⚠️ OpenClaw 待补） | 多Agent 笔记 §3 |
 | 42 | 多 Agent 间的通信协调方式（⚠️ OpenClaw 待补） | 多Agent 笔记 §6 |
 
-### 🔴 待撰写（37 道）
+### 🔴 待撰写（36 道）
 
 | # | 分类 | 题号 | 题目 | 解决节点 |
 |---|------|:---:|------|---------|
-| 1 | 基础 | 10 | LLM Agent 的常见功能介绍 | Agent 学完后 |
-| 2 | 基础 | 7 | Copilot 模式与 Agent 模式的核心差异 | Agent 学完后 |
-| 3 | 记忆 | 12 | LLM Agent 长期记忆能力的实现方法 | Memory 学完后 |
-| 4 | 记忆 | 22 | 短期记忆与长期记忆的差异及存储检索方式 | Memory 学完后 |
+| 1 | 基础 | 7 | Copilot 模式与 Agent 模式的核心差异 | Agent 学完后 |
+| 2 | 记忆 | 12 | LLM Agent 长期记忆能力的实现方法 | Memory 学完后 |
+| 3 | 记忆 | 22 | 短期记忆与长期记忆的差异及存储检索方式 | Memory 学完后 |
 | 5 | 框架 | 1 | OpenClaw 的核心原理解析 | 阶段 3 |
 | 6 | 框架 | 2-6 | LangChain/LlamaIndex 相关（5 道） | 阶段 4 |
 | 7 | 框架 | 14-16 | 多模态推理/框架对比/AutoGPT（3 道） | 阶段 3-4 |
@@ -34,8 +33,8 @@
 | 10 | Skills | 32, 33 | Skills 定义及作用 / MCP 与 Skills 差异（2 道） | ⏸️ 待学 Skills 后补充 |
 | 11 | LangChain | 46-48 | LangChain Agent（3 道） | 阶段 4 |
 
-> 📊 共 48 道：🟢 11 道 + 🔴 37 道（分 11 组）
-> 🔑 下一步：题10（Agent 常见功能）→ Memory（题12/22）→ 框架 & OpenClaw（阶段 3-4）
+> 📊 共 48 道：🟢 12 道 + 🔴 36 道（分 11 组）
+> 🔑 下一步：Memory（题12/22）→ 框架 & OpenClaw（阶段 3-4）
 
 ---
 
@@ -76,7 +75,29 @@ Agent = LLM + Memory + Tools + Planning + Action，我分两组理解：
 **关键词**：Agent 架构、LLM、Memory、Tools、Planning、Action、循环执行、弹药与打仗
 
 
-## 题11： Agent 智能体的核心工作流程
+## 题10：LLM Agent 的常见功能介绍
+
+**我的回答**
+
+Agent 的核心功能分八类，我在 baby-ai 里全部落地了：
+
+| 功能 | 做什么 | 我的项目落地 |
+|------|------|------|
+| **意图识别 + 任务规划** | 理解用户要什么、拆成几步执行 | QR 指代消解 + 意图路由（6类）+ ReAct 多步循环 |
+| **工具调用（Function Calling**） | 自主决定调哪个 API、传什么参数 | 天气查询，ThreadPoolExecutor 并行执行同轮 tool_calls |
+| **知识检索（RAG）** | 从知识库中找相关文档作为生成依据 | Dense+Sparse 混合检索 + Rerank 三级精排 |
+| **自我反思（Self-Reflection）** | 审视输出质量、发现错误并修正 | Critique → Refine 审查修正，实测捕获 5 个用药安全问题 |
+| **多轮对话** | 记住上下文，支持追问和指代消解 | session 管理 + QR 代词还原 |
+| **降级兜底** | 子服务异常时系统不崩溃 | Rerank 三级降级 + 工具失败不阻塞主流程 |
+| **多 Agent 协作**| 多个 Agent 分工配合 | 检索 Agent → 生成 Agent → 审核 Agent 流水线 |
+| **流式输出** | 逐 token 推送减少等待 | SSE 流式，用户停止时释放资源 |
+
+**项目关联**：baby-ai 从纯 RAG 演进到统一 Agent 架构，上述八项功能全部在 `unified_agent_chat` 单接口中打通——从预处理到审核反思，7 步闭环。
+
+**关键词**：Agent 功能、Function Calling、RAG、Self-Reflection、多轮对话、降级兜底、多 Agent 协作、SSE 流式
+
+
+## 题11：Agent 智能体的核心工作流程
 
 **我的回答**
 
