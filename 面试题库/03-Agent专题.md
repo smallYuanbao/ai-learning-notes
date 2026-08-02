@@ -2,17 +2,19 @@
 
 ## ⏳ 待整理清单
 
-### 🟢 已完成（11 道）
+### 🟢 已完成（13 道）
 
 | 题号 | 题目 | 知识来源 |
 |:---:|------|------|
 | 8 | 大模型 Agent 的定义及与传统 AI 系统的区别 | FunctionCalling 笔记 §一 |
 | 9 | LLM Agent 的基本架构组成 | FunctionCalling 笔记 §一 |
 | 11 | Agent 智能体的核心工作流程 | FunctionCalling 笔记 §一 + 流程图 |
+| 12 | LLM Agent 长期记忆能力的实现方法 | 跨会话记忆 笔记 |
 | 13 | LLM Agent 动态 API 调用的实现方式 | FunctionCalling 笔记 §二 |
 | 17 | Agent 死循环问题的解决方法 | ReAct 笔记 §终止条件 |
 | 18 | AI Agent 与直接调用大模型 API 问答的本质区别 | FunctionCalling 笔记 §四 |
 | 19 | Tool Calling 工具调用的完整链路解析 | FunctionCalling 笔记 §二 |
+| 22 | Agent 系统中短期记忆与长期记忆的差异 | 跨会话记忆 笔记 |
 | 35 | 多 Agent 系统中消息路由的设计（⚠️ OpenClaw 待补） | 多Agent 笔记 §6 |
 | 40 | 多 Agent 协作的适用场景（⚠️ OpenClaw 待补） | 多Agent 笔记 §2 |
 | 41 | 父 Agent 生成子 Agent 的边界问题（⚠️ OpenClaw 待补） | 多Agent 笔记 §3 |
@@ -33,8 +35,8 @@
 | 10 | Skills | 32, 33 | Skills 定义及作用 / MCP 与 Skills 差异（2 道） | ⏸️ 待学 Skills 后补充 |
 | 11 | LangChain | 46-48 | LangChain Agent（3 道） | 阶段 4 |
 
-> 📊 共 48 道：🟢 12 道 + 🔴 36 道（分 11 组）
-> 🔑 下一步：Memory（题12/22）→ 框架 & OpenClaw（阶段 3-4）
+> 📊 共 48 道：🟢 14 道 + 🔴 34 道（分 11 组）
+> 🔑 下一步：框架 & OpenClaw（阶段 3-4）
 
 ---
 
@@ -128,6 +130,34 @@ ReAct 是"向前看"——决定下一步做什么。Self-Reflection 是"向后�
 
 **关键词**：Agent 工作流程、ReAct、Self-Reflection、Reflexion、Critique、Refine、反思循环
 
+
+## 题12：LLM Agent 长期记忆能力的实现方法
+
+**我的回答**
+
+长期记忆让 Agent 在跨会话场景下记住用户的关键信息，不被重启或换会话抹掉。
+
+**实现流程**：对话结束 → LLM 提取关键信息（月龄/过敏史/关注主题）→ 向量化存入 ChromaDB → 下次新会话时检索档案 → 注入 System Prompt。
+
+**三个环节**：
+
+1. **信息提取**：审核完成后调 LLM（temperature=0），从对话中提取结构化 JSON（`{baby_age, allergies, concerns}`）。
+2. **存储策略**：以 session_id 为文档 ID 做 upsert，新信息自动合并到已有档案。
+3. **注入方式**：新会话开始时检索用户档案，转为自然语言拼入 System Prompt。
+
+**与短期记忆的关系**：
+
+| | 短期记忆 | 长期记忆 |
+|------|------|------|
+| 存储位置 | 服务端内存 dict | ChromaDB（user_profiles collection） |
+| 生命周期 | 当前会话，重启丢失 | 跨会话持久化 |
+| 我的实现 | `session_manager.py` | `user_profile.py` |
+
+**项目关联**：baby-ai 的 `user_profile.py` 管理长期档案，Agent 主流程在审核完成后自动提取信息存入 ChromaDB，下次会话自动检索注入。
+
+**关键词**：长期记忆、跨会话记忆、ChromaDB、用户档案、信息提取、System Prompt 注入
+
+---
 
 ## 题13：LLM Agent 动态 API 调用的实现方式
 
@@ -253,6 +283,27 @@ Tool Calling 的完整链路分四步：
 
 **关键词**：Tool Calling、Function Calling、JSON Schema、tool_calls、Observation、推理闭环
 
+
+## 题22：Agent 系统中短期记忆与长期记忆的差异及存储检索方式
+
+**我的回答**
+
+| 维度 | 短期记忆 | 长期记忆 |
+|------|------|------|
+| 存储位置 | 服务端内存 dict（当前对话 messages 数组） | ChromaDB 向量库（user_profiles collection） |
+| 生命周期 | 当前会话，服务重启即丢失 | 跨会话持久化，服务重启仍存在 |
+| 存储内容 | 本轮 ReAct 的 Thought→Action→Observation 完整轨迹 | LLM 提取的结构化关键信息（月龄/过敏史/关注主题） |
+| 检索方式 | 直接从内存读取，O(1) | 向量相似度检索，新会话开始时自动查询 |
+| 容量管理 | 超过 max_steps 或 Token 上限触发裁剪 | upsert 合并新信息，后续可加记忆衰减 |
+| 我的实现 | `session_manager.py` | `user_profile.py` |
+
+**核心差异一句话**：短期记忆帮 Agent 记住"刚刚聊了什么"，长期记忆帮 Agent 记住"你这个人是谁"。
+
+**项目关联**：baby-ai 短期记忆由 `session_manager.py` 管理当前会话 messages 数组；长期记忆由 `user_profile.py` 在审核完成后自动提取并存入 ChromaDB，下次新会话检索注入 System Prompt。
+
+**关键词**：短期记忆、长期记忆、session_manager、ChromaDB、用户档案、跨会话
+
+---
 
 ## 题35 多 Agent 系统中消息路由的设计及 OpenClaw 的路由匹配优先级
 

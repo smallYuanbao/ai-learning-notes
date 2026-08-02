@@ -127,11 +127,21 @@
 
 - 📝 **实际产出**：安全防护.md（攻击分类+四层防御）+ 成本控制.md（三消耗维度+四层方案）+ 工程化专题 安全题1/成本题3
 
-### 周四（7/31）— Agent 记忆系统设计
+### 周四（7/31）— vLLM 原理与选型 ✅ 已完成
 
-- **上午**：学习 Agent 记忆类型（短期/长期/工作记忆）及存储方案
-- **下午**：在 baby-ai 里实现「跨会话记忆」
-- **晚上**：笔记《Agent 记忆系统设计》+ 面试题 题12、22
+- 📝 **实际产出**：vLLM原理与选型.md（PagedAttention/OS对比/ContinuousBatching/Ollama对比，7张表）
+
+### 周五（8/1）— 休息
+
+### 周六（8/2）— 跨会话记忆 ✅ 已完成
+
+- 📝 **实际产出**：跨会话记忆.md（LLM提取→ChromaDB存储→SystemPrompt注入）+ Agent 专题 题12/22 + vLLM原理与选型.md
+
+### 周日（8/3）— LangChain 快速上手
+
+- **上午**：过 LangChain 官方 quickstart，理解 Chain / Agent / Memory / Tools
+- **下午**：用 LangChain 重写项目里的 RAG 管道（对比裸写和框架的差异）
+- **晚上**：笔记《LangChain 核心概念》+ 面试题「LangChain 解决了什么问题？」
 
 ### 周三 — MCP 协议与接入（原计划，已提前完成）
 
