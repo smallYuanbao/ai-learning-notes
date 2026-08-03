@@ -139,7 +139,13 @@
 
 ### 周日（8/3）— LangChain 快速上手 ✅ 已完成
 
-- 📝 **实际产出**：LangChain核心概念.md（定义/四大概念/裸写vs框架/Chain vs Agent）+ 协议与框架 题6/49 + Agent 题46/47/48（5道）
+- 📝 **实际产出**：LangChain核心概念.md + LangGraph核心概念.md（StateGraph/条件边/Demo/API/自建对比）+ 协议与框架 题6/7/8/9/49（5道）+ Agent 题46/47/48（3道）
+
+### 周一（8/4）— A2A 协议 + LlamaIndex / AutoGen 对比
+
+- **上午**：A2A 协议理论学习（五大设计原则/工作原理/与 MCP 关系）
+- **下午**：LlamaIndex vs LangChain + AutoGen vs CrewAI 框架对比
+- **晚上**：笔记整理 + 面试题
 
 ### 周三 — MCP 协议与接入（原计划，已提前完成）
 
