@@ -19,23 +19,23 @@
 | 40 | 多 Agent 协作的适用场景（⚠️ OpenClaw 待补） | 多Agent 笔记 §2 |
 | 41 | 父 Agent 生成子 Agent 的边界问题（⚠️ OpenClaw 待补） | 多Agent 笔记 §3 |
 | 42 | 多 Agent 间的通信协调方式（⚠️ OpenClaw 待补） | 多Agent 笔记 §6 |
+| 46 | LangChain 中 Chain 与 Agent 的定义及应用场景 | LangChain 核心概念 笔记 |
+| 47 | LangChain 中 Agent 的定义及与 Chain 的差异 | LangChain 核心概念 笔记 |
+| 48 | LangChain 的 Agent 执行流程解析 | LangChain 核心概念 笔记 |
 
-### 🔴 待撰写（36 道）
+### 🔴 待撰写（33 道）
 
 | # | 分类 | 题号 | 题目 | 解决节点 |
 |---|------|:---:|------|---------|
 | 1 | 基础 | 7 | Copilot 模式与 Agent 模式的核心差异 | Agent 学完后 |
-| 2 | 记忆 | 12 | LLM Agent 长期记忆能力的实现方法 | Memory 学完后 |
-| 3 | 记忆 | 22 | 短期记忆与长期记忆的差异及存储检索方式 | Memory 学完后 |
-| 5 | 框架 | 1 | OpenClaw 的核心原理解析 | 阶段 3 |
-| 6 | 框架 | 2-6 | LangChain/LlamaIndex 相关（5 道） | 阶段 4 |
-| 7 | 框架 | 14-16 | 多模态推理/框架对比/AutoGPT（3 道） | 阶段 3-4 |
-| 8 | OpenClaw | 23-26,28-31,36-39,43-45 | OpenClaw 专属（13 道） | 阶段 3 |
-| 9 | 通用 | 20-22,27,34 | 通用 Agent / MCP（5 道） | 阶段 3 |
-| 10 | Skills | 32, 33 | Skills 定义及作用 / MCP 与 Skills 差异（2 道） | ⏸️ 待学 Skills 后补充 |
-| 11 | LangChain | 46-48 | LangChain Agent（3 道） | 阶段 4 |
+| 2 | 框架 | 1 | OpenClaw 的核心原理解析 | 阶段 3 |
+| 3 | 框架 | 2-6 | LangChain/LlamaIndex 相关（5 道） | 阶段 4 |
+| 4 | 框架 | 14-16 | 多模态推理/框架对比/AutoGPT（3 道） | 阶段 3-4 |
+| 5 | OpenClaw | 23-26,28-31,36-39,43-45 | OpenClaw 专属（13 道） | 阶段 3 |
+| 6 | 通用 | 20-22,27,34 | 通用 Agent / MCP（5 道） | 阶段 3 |
+| 7 | Skills | 32, 33 | Skills 定义及作用 / MCP 与 Skills 差异（2 道） | ⏸️ 待学 Skills 后补充 |
 
-> 📊 共 48 道：🟢 14 道 + 🔴 34 道（分 11 组）
+> 📊 共 48 道：🟢 17 道 + 🔴 31 道（分 7 组）
 > 🔑 下一步：框架 & OpenClaw（阶段 3-4）
 
 ---
@@ -427,4 +427,70 @@ Tool Calling 的完整链路分四步：
 **项目关联**：baby-ai 当前单 Agent，消息协调在编排器内部完成。引入多 Agent 后首选用 LangGraph 条件边做显式路由（检索→生成→审核），状态通过 StateGraph 全局共享。
 
 **关键词**：多 Agent 通信、路由拓扑、路由策略、消息协议、显式路由、状态快照
+
+---
+
+## 题46：LangChain 中 Chain 与 Agent 的定义及应用场景举例
+
+**我的回答**
+
+| | Chain | Agent |
+|------|------|------|
+| 定义 | 把多个步骤按固定顺序串联，上一步输出是下一步输入 | LLM 作为推理引擎，自主决策调用哪个工具及顺序 |
+| 决策方式 | 硬编码路径，A→B→C 不可变 | 动态决策，LLM 根据中间结果判断下一步 |
+| 适用场景 | 流程确定、步骤固定的任务 | 需要根据中间结果灵活调整的任务 |
+
+**Chain 场景举例**：检索→生成的标准 RAG 管道。用户问 → 查向量库 → 拼 Prompt → LLM 生成，四步顺序固定，不需要 LLM 判断"要不要查向量库"。
+
+**Agent 场景举例**：用户问"北京明天能带宝宝出门吗"。Agent 判断需要天气数据 → 调 get_weather → 拿到结果后发现还需要 RAG 知识库补充育儿建议 → 再调检索。每一步下一步做什么是 LLM 动态决定的，不是预先写死的。
+
+**项目关联**：baby-ai 的 `unified_agent_chat` 用了 Chain 做固定流水线（预处理→工具决策→RAG检索→合并→生成→审核），用了 Agent（ReAct + Function Calling）做工具调用环节的动态决策。
+
+**关键词**：Chain、Agent、固定流程、动态决策
+
+---
+
+## 题47：LangChain 中 Agent 的定义及与 Chain 的差异
+
+**我的回答**
+
+**定义**：Agent 是以 LLM 为推理引擎的自主决策单元——它不按预设路径走，而是根据每一步的 Observation 动态判断下一步该调哪个工具还是直接回答。
+
+**与 Chain 的核心差异**：
+
+| 维度 | Chain | Agent |
+|------|------|------|
+| 控制流 | 代码写死（`A→B→C`） | LLM 动态决定 |
+| 每次结果是否相同 | 相同输入走相同路径 | 相同输入可能走不同路径（LLM 判断不同） |
+| 适合任务 | 确定性流程（RAG 检索→生成） | 开放性任务（需要探索式推理） |
+| 成本 | 低（只调一次 LLM） | 高（每步可能调 LLM 做决策） |
+| 可调试性 | 强（路径固定，容易复现） | 弱（LLM 决策不可预测） |
+
+**一句话**：Chain 是"流水线"，Agent 是"自主导航"。能用流水线解决的问题不用自主导航——成本低、可预测、好调试。
+
+**项目关联**：baby-ai 同时用了两种模式——整体流程用 Chain（7 步固定流水线），工具调用环节用 Agent（ReAct 循环）。
+
+**关键词**：Chain、Agent、控制流、流水线、自主导航
+
+---
+
+## 题48：LangChain 的 Agent 执行流程解析
+
+**我的回答**
+
+LangChain Agent 的执行流程本质就是 ReAct 循环的工程化封装：
+
+| 步骤 | 做什么 | LangChain 组件 |
+|:---:|------|------|
+| ① 接收输入 | 用户问题 + 可用工具列表 | AgentExecutor |
+| ② 推理决策 | LLM 判断：直接回答还是调工具？调哪个？参数是什么？ | Agent（LLM 推理引擎） |
+| ③ 执行工具 | 如果有 tool_calls，调对应函数获取结果 | Tools |
+| ④ 观察反馈 | 工具返回结果追加到对话历史 | Memory |
+| ⑤ 循环判断 | 信息是否充足？充足→生成最终回答，不足→回到② | AgentExecutor |
+
+**和裸写 ReAct 的区别**：LangChain 的 AgentExecutor 帮你封装了 while 循环、tool_calls 解析、Observation 拼接、终止条件判断——裸写你要手写这些逻辑，LangChain 一个 `agent.invoke()` 全搞定。代价是灵活度降低——比如你没法在循环中间插入自定义的降级逻辑。
+
+**项目关联**：baby-ai 的 Agent 执行流程和 LangChain Agent 逻辑一致（ReAct 循环 + Tool Calling + Memory），但选择了裸写——需要精细控制每一步的异常处理和三级降级策略。
+
+**关键词**：Agent 执行流程、AgentExecutor、ReAct、Tool Calling、Memory
 

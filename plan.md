@@ -137,11 +137,9 @@
 
 - 📝 **实际产出**：跨会话记忆.md（LLM提取→ChromaDB存储→SystemPrompt注入）+ Agent 专题 题12/22 + vLLM原理与选型.md
 
-### 周日（8/3）— LangChain 快速上手
+### 周日（8/3）— LangChain 快速上手 ✅ 已完成
 
-- **上午**：过 LangChain 官方 quickstart，理解 Chain / Agent / Memory / Tools
-- **下午**：用 LangChain 重写项目里的 RAG 管道（对比裸写和框架的差异）
-- **晚上**：笔记《LangChain 核心概念》+ 面试题「LangChain 解决了什么问题？」
+- 📝 **实际产出**：LangChain核心概念.md（定义/四大概念/裸写vs框架/Chain vs Agent）+ 协议与框架 题6/49 + Agent 题46/47/48（5道）
 
 ### 周三 — MCP 协议与接入（原计划，已提前完成）
 
