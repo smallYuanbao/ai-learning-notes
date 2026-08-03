@@ -129,7 +129,7 @@
 
 | 日期 | 学了什么 | 笔记链接 | 关联面试题 |
 |------|---------|---------|-----------|
-| 2026-08-03 | LangChain 核心概念 + LangGraph 核心概念（StateGraph/条件边/Demo/API/对比） | [笔记](./05-框架与协议/LangChain核心概念.md)、[笔记](./05-框架与协议/LangGraph核心概念.md) | Agent 题46/47/48，协议与框架 题6/49/7/8/9 |
+| 2026-08-03（周一） | LangChain 核心概念 + LangGraph 核心概念（StateGraph/条件边/Demo/API/对比） | [笔记](./05-框架与协议/LangChain核心概念.md)、[笔记](./05-框架与协议/LangGraph核心概念.md) | Agent 题46/47/48，协议与框架 题6/49/7/8/9 |
 | 2026-08-02 | 跨会话记忆（长期记忆：LLM提取→ChromaDB存储→SystemPrompt注入） | [笔记](./03-Agent开发/跨会话记忆.md) | Agent 专题 题12、22 |
 | 2026-07-31 | vLLM原理与选型（PagedAttention/ContinuousBatching/Ollama对比） | [笔记](./04-工程化/vLLM原理与选型.md) | 工程化专题 LLM题2 |
 | 2026-07-30 | 安全防护 + 成本控制 | [笔记](./04-工程化/安全防护.md)、[笔记](./04-工程化/成本控制.md) | 工程化专题 安全题1、成本题3 |

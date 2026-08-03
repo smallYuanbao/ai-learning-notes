@@ -119,29 +119,29 @@
 
 - 📝 **实际产出**：Docker基础.md（概念/VM对比/Dockerfile/多阶段构建/docker-compose/K8s补充，10张表）
 
-### 周二（7/29）— pytest 测试 + 流式输出优化 ✅ 已完成
+### 周三（7/29）— pytest 测试 + 流式输出优化 ✅ 已完成
 
 - 📝 **实际产出**：pytest测试.md（接口测试+服务层测试）+ 流式输出优化.md（中断处理+错误兜底）+ 工程化专题 题3/5/10
 
-### 周三（7/30）— 安全防护 + 成本控制 ✅ 已完成
+### 周四（7/30）— 安全防护 + 成本控制 ✅ 已完成
 
 - 📝 **实际产出**：安全防护.md（攻击分类+四层防御）+ 成本控制.md（三消耗维度+四层方案）+ 工程化专题 安全题1/成本题3
 
-### 周四（7/31）— vLLM 原理与选型 ✅ 已完成
+### 周五（7/31）— vLLM 原理与选型 ✅ 已完成
 
 - 📝 **实际产出**：vLLM原理与选型.md（PagedAttention/OS对比/ContinuousBatching/Ollama对比，7张表）
 
-### 周五（8/1）— 休息
+### 周六（8/1）— 休息
 
-### 周六（8/2）— 跨会话记忆 ✅ 已完成
+### 周日（8/2）— 跨会话记忆 ✅ 已完成
 
 - 📝 **实际产出**：跨会话记忆.md（LLM提取→ChromaDB存储→SystemPrompt注入）+ Agent 专题 题12/22 + vLLM原理与选型.md
 
-### 周日（8/3）— LangChain 快速上手 ✅ 已完成
+### 周一（8/3）— LangChain + LangGraph ✅ 已完成
 
 - 📝 **实际产出**：LangChain核心概念.md + LangGraph核心概念.md（StateGraph/条件边/Demo/API/自建对比）+ 协议与框架 题6/7/8/9/49（5道）+ Agent 题46/47/48（3道）
 
-### 周一（8/4）— A2A 协议 + LlamaIndex / AutoGen 对比
+### 周二（8/4）— A2A 协议 + LlamaIndex / AutoGen 对比
 
 - **上午**：A2A 协议理论学习（五大设计原则/工作原理/与 MCP 关系）
 - **下午**：LlamaIndex vs LangChain + AutoGen vs CrewAI 框架对比
