@@ -191,7 +191,24 @@ ReAct 是"向前看"——决定下一步做什么。Self-Reflection 是"向后�
 
 **关键词**：动态 API 调用、Function Calling、JSON Schema、tool_calls、语义理解、工具注册
 
+---
 
+## 题15： 主流 LLM Agent 框架及各自特点
+
+**我的回答**
+
+| 框架 | 核心定位 | 擅长场景 | 和我的项目关系 |
+|------|------|------|------|
+| LangChain | 通用 LLM 应用开发框架 | 快速原型、标准化任务 | 选择自建，但掌握了核心概念 |
+| LangGraph | 状态图编排框架 | 复杂分支、循环流程 | 条件边可解决”审核不通过→重新生成” |
+| LlamaIndex | 数据索引和检索框架 | 大量文档的索引构建和查询 | 自建检索和分块逻辑在功能上等价 |
+| AutoGen | 多 Agent 对话协作框架 | Agent 间通过对话协商完成任务 | 我的流水线是固定编排，AutoGen 是动态对话 |
+
+**项目关联**：baby-ai 当前自建流水线替代了这四套框架——LangChain 的 Chain 对应我的 7 步流水线，LangGraph 的条件边对应我的审核不通过→重新生成，LlamaIndex 的检索对应我的 hybrid_search+rerank，AutoGen 的动态对话模式是我后续升级方向。
+
+**关键词**：Agent 框架、LangChain、LangGraph、LlamaIndex、AutoGen、框架选型
+
+---
 
 ## 题17：Agent 死循环问题的解决方法
 
@@ -239,7 +256,7 @@ ReAct 是"向前看"——决定下一步做什么。Self-Reflection 是"向后�
 >
 > **事后总结型（Reflexion）**：先完整跑完 ReAct 循环，任务失败后触发反思，把整段行动轨迹喂给反思器，提炼教训（如'get_weather 的 city 参数应该用中文全称'）存入长期 Memory。清除当前上下文，下一轮尝试自动检索教训修正计划。这是我最推荐的生产方案——反思只在报错时触发一次，不烧 Token，教训还能跨会话复用。
 >
-> **多智能体监督型**：一个 Critic Agent 并行监控执行 Agent，发现连续调用同一错误 API 立刻发中断指令注入上下文。适合金融审核等极高风险场景。
+> **多智能体监督型**：一个 Critic（批评者） Agent 并行监控执行 Agent，发现连续调用同一错误 API 立刻发中断指令注入上下文。适合金融审核等极高风险场景。
 >
 > 我项目里用的就是 Reflexion 简化版——评估器判断失败 → 反思器生成 Critique → Refine 重写回答，而不是在原地打转重复调同一个 API。”
 
