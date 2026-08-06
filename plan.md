@@ -145,6 +145,10 @@
 
 - 📝 **实际产出**：A2A协议.md + LlamaIndex与AutoGen.md + 协议与框架 A2A题1/2/3/4/13 + LangChain题31 + Agent题15（7道）
 
+### 周三（8/5）— HuggingFace 生态 ✅ 已完成
+
+- 📝 **实际产出**：HuggingFace生态.md（定义/三大组件/Pipelines/Demo/面试怎么讲）
+
 ### 周三 — MCP 协议与接入（原计划，已提前完成）
 
 - **上午**：读 MCP 官方文档 + 看一个 MCP Server 示例（如 fetch 或 filesystem）

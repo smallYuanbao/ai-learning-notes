@@ -129,6 +129,7 @@
 
 | 日期 | 学了什么 | 笔记链接 | 关联面试题 |
 |------|---------|---------|-----------|
+| 2026-08-05（周三） | HuggingFace 生态（三大组件/Pipelines/Transformers/Demo） | [笔记](./05-框架与协议/HuggingFace生态.md) | — |
 | 2026-08-04（周二） | A2A 协议 + LlamaIndex/AutoGen对比 | [笔记](./05-框架与协议/A2A协议.md)、[笔记](./05-框架与协议/LlamaIndex与AutoGen.md) | Agent 题15，协议与框架 A2A题1/2/3/4/13，LangChain题31 |
 | 2026-08-03（周一） | LangChain 核心概念 + LangGraph 核心概念（StateGraph/条件边/Demo/API/对比） | [笔记](./05-框架与协议/LangChain核心概念.md)、[笔记](./05-框架与协议/LangGraph核心概念.md) | Agent 题46/47/48，协议与框架 题6/49/7/8/9 |
 | 2026-08-02 | 跨会话记忆（长期记忆：LLM提取→ChromaDB存储→SystemPrompt注入） | [笔记](./03-Agent开发/跨会话记忆.md) | Agent 专题 题12、22 |
