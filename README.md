@@ -9,8 +9,8 @@
 
 ## 📍 当前进度
 
-- **当前阶段**：阶段 3 - Agent 智能体开发（收尾）
-- **本周任务**：阶段收尾 + 进度同步
+- **当前阶段**：阶段 4 - 工程化与框架（收尾） → 阶段 5 微调入门
+- **本周任务**：收尾 Transformer + 查漏补缺 + 进度同步
 - **今日任务**：进度同步 + 代码提交
 
 ---
@@ -103,6 +103,7 @@
 | 工程化 & 高并发 | 16 | 0 | - | ⬜ 0% |
 | 工程化专题 | 80 | 4 | 2 | 🟢 5% |
 | 安全 & 成本 | 15 | 0 | - | ⬜ 0% |
+| Transformer 与基础模型 | 32 | 6 | 0 | 🟢 19% |
 
 ---
 
@@ -129,6 +130,8 @@
 
 | 日期 | 学了什么 | 笔记链接 | 关联面试题 |
 |------|---------|---------|-----------|
+| 2026-08-07（周四） | Transformer 面试题 6 道撰写（残差/多头/KQ/架构/RNN/位置编码） | [回答](./面试题库/07-Transformer专题.md) | Transformer 专题 题4/6/7/15/16/22 |
+| 2026-08-06（周三） | Transformer 基础（Self-Attention/QKV/多头/残差/位置编码/RoPE/NumPy手写） | [笔记](./05-框架与协议/Transformer基础.md) | — |
 | 2026-08-05（周三） | HuggingFace 生态（三大组件/Pipelines/Transformers/Demo） | [笔记](./05-框架与协议/HuggingFace生态.md) | — |
 | 2026-08-04（周二） | A2A 协议 + LlamaIndex/AutoGen对比 | [笔记](./05-框架与协议/A2A协议.md)、[笔记](./05-框架与协议/LlamaIndex与AutoGen.md) | Agent 题15，协议与框架 A2A题1/2/3/4/13，LangChain题31 |
 | 2026-08-03（周一） | LangChain 核心概念 + LangGraph 核心概念（StateGraph/条件边/Demo/API/对比） | [笔记](./05-框架与协议/LangChain核心概念.md)、[笔记](./05-框架与协议/LangGraph核心概念.md) | Agent 题46/47/48，协议与框架 题6/49/7/8/9 |
@@ -168,6 +171,7 @@
 - [题库 - RAG 专题](./面试题库/01-RAG专题.md)
 - [题库 - Agent 专题](./面试题库/03-Agent专题.md)
 - [题库 - 协议与框架](./面试题库/04-协议与框架专题.md)
+- [题库 - Transformer 专题](./面试题库/07-Transformer专题.md)
 - [baby-ai 项目 GitHub](https://github.com/smallYuanbao/baby-ai)
 - [学习大纲（飞书）](https://my.feishu.cn/wiki/TRA2w6h9ti499kkoQuUckwPwnKh)
 - [大纲覆盖分析](./大纲覆盖分析.md)（哪些学了、哪些待学、哪些跳过）

@@ -249,11 +249,9 @@
 - **下午**：从 HuggingFace 下载一个模型，用 Transformers 跑推理
 - **晚上**：笔记《HuggingFace 生态入门》+ 面试题「HuggingFace Pipelines 的优势和局限性」
 
-### 周五 — Transformer 基础（概念层）
+### 周五 — Transformer 基础（概念层）✅ 已完成
 
-- **上午**：看 3Blue1Brown 的 Transformer 可视化视频 + 读图解 Transformer 文章
-- **下午**：手动实现一个极简的 Self-Attention 计算（用 NumPy）
-- **晚上**：笔记《Transformer 核心思想》+ 面试题「Transformer 的基本原理」
+- 📝 **实际产出**：Transformer基础.md（Self-Attention/QKV/多头注意力/残差连接/位置编码/RoPE/NumPy手写实现，7节335行）+ Transformer 面试题 6/32 道（题4/6/7/15/16/22）
 
 ### 周六 — 查漏补缺
 
